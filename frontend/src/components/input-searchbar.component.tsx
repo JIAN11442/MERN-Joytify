@@ -6,11 +6,11 @@ import { IconName } from "./react-icons.component";
 import AnimationWrapper, {
   DefaultAnimationWrapperProps,
 } from "./animation-wrapper.component";
-import InputBox, { InputBoxProps } from "./input-box.component";
+import InputBox, { InputProps } from "./input-box.component";
 import mergeRefs from "../lib/merge-refs.lib";
 import { timeoutForEventListener } from "../lib/timeout.lib";
 
-interface SearchBarProps extends DefaultAnimationWrapperProps, InputBoxProps {
+interface SearchBarProps extends DefaultAnimationWrapperProps, InputProps {
   visible?: boolean;
   icon?: { name: IconName; opts?: IconBaseProps };
   autoCloseFn?: { active: boolean; closeFn: () => void | null };

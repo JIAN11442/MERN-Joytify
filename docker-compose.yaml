@@ -3,14 +3,11 @@ services:
   api:
     build:
       context: ./backend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: api
     restart: always
     env_file:
       - ./backend/.env
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
     networks:
       - mynetwork
 
@@ -18,16 +15,9 @@ services:
   web:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: web
     restart: always
-    env_file:
-      - ./frontend/.env
-    environment:
-      - VITE_SERVER_URL=http://localhost:5175/api
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     networks:
       - mynetwork
     depends_on:
