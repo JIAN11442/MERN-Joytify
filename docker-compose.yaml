@@ -1,0 +1,53 @@
+services:
+  # Backend
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: api
+    restart: always
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - mynetwork
+
+  # Frontend
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: web
+    restart: always
+    env_file:
+      - ./frontend/.env
+    environment:
+      - VITE_SERVER_URL=http://localhost:5175/api
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - mynetwork
+    depends_on:
+      - api
+
+  # Nginx
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    container_name: nginx
+    restart: always
+    ports:
+      - 5175:80
+    networks:
+      - mynetwork
+    depends_on:
+      - api
+      - web
+
+networks:
+  mynetwork:
+    driver: bridge
