@@ -1,12 +1,12 @@
-import UserModel from "../../src/models/user.model";
-import SongModel from "../../src/models/song.model";
-import AlbumModel from "../../src/models/album.model";
-import StatsModel from "../../src/models/stats.model";
-import HistoryModel from "../../src/models/history.model";
-import PlaybackModel from "../../src/models/playback.model";
-import PlaylistModel from "../../src/models/playlist.model";
-import MusicianModel from "../../src/models/musician.model";
-import VerificationModel from "../../src/models/verification.model";
+import UserModel from "../../../src/models/user.model";
+import SongModel from "../../../src/models/song.model";
+import AlbumModel from "../../../src/models/album.model";
+import StatsModel from "../../../src/models/stats.model";
+import HistoryModel from "../../../src/models/history.model";
+import PlaybackModel from "../../../src/models/playback.model";
+import PlaylistModel from "../../../src/models/playlist.model";
+import MusicianModel from "../../../src/models/musician.model";
+import VerificationModel from "../../../src/models/verification.model";
 import {
   getProfileUserInfo,
   getProfileCollectionsInfo,
@@ -15,39 +15,39 @@ import {
   resetUserPassword,
   changeUserPassword,
   deregisterUserAccount,
-} from "../../src/services/user.service";
-import { sendEmail } from "../../src/services/verification.service";
+} from "../../../src/services/user.service";
+import { sendEmail } from "../../../src/services/verification.service";
 import { ProfileCollections } from "@joytify/shared-types/constants";
-import { compareHashValue } from "../../src/utils/bcrypt.util";
-import { getPaginatedDocs } from "../../src/utils/mongoose.util";
-import { verifyToken, VerificationTokenSignOptions } from "../../src/utils/jwt.util";
-import appAssert from "../../src/utils/app-assert.util";
+import { compareHashValue } from "../../../src/utils/bcrypt.util";
+import { getPaginatedDocs } from "../../../src/utils/mongoose.util";
+import { verifyToken, VerificationTokenSignOptions } from "../../../src/utils/jwt.util";
+import appAssert from "../../../src/utils/app-assert.util";
 
 // Mock all external dependencies
-jest.mock("../../src/models/user.model");
-jest.mock("../../src/models/song.model");
-jest.mock("../../src/models/album.model");
-jest.mock("../../src/models/stats.model");
-jest.mock("../../src/models/history.model");
-jest.mock("../../src/models/playback.model");
-jest.mock("../../src/models/playlist.model");
-jest.mock("../../src/models/musician.model");
-jest.mock("../../src/models/verification.model");
-jest.mock("../../src/services/verification.service");
-jest.mock("../../src/utils/bcrypt.util");
-jest.mock("../../src/utils/mongoose.util");
-jest.mock("../../src/utils/jwt.util");
-jest.mock("../../src/utils/app-assert.util");
-jest.mock("../../src/templates/password-changed.template");
-jest.mock("../../src/constants/env-validate.constant");
+jest.mock("../../../src/models/user.model");
+jest.mock("../../../src/models/song.model");
+jest.mock("../../../src/models/album.model");
+jest.mock("../../../src/models/stats.model");
+jest.mock("../../../src/models/history.model");
+jest.mock("../../../src/models/playback.model");
+jest.mock("../../../src/models/playlist.model");
+jest.mock("../../../src/models/musician.model");
+jest.mock("../../../src/models/verification.model");
+jest.mock("../../../src/services/verification.service");
+jest.mock("../../../src/utils/bcrypt.util");
+jest.mock("../../../src/utils/mongoose.util");
+jest.mock("../../../src/utils/jwt.util");
+jest.mock("../../../src/utils/app-assert.util");
+jest.mock("../../../src/templates/password-changed.template");
+jest.mock("../../../src/constants/env-validate.constant");
 
 // Mock template functions
-jest.mock("../../src/templates/password-changed.template", () => ({
+jest.mock("../../../src/templates/password-changed.template", () => ({
   JoytifyPasswordChangedEmail: jest.fn().mockReturnValue("password-changed-template" as any),
 }));
 
 // Import mocked template functions after mocking
-import { JoytifyPasswordChangedEmail } from "../../src/templates/password-changed.template";
+import { JoytifyPasswordChangedEmail } from "../../../src/templates/password-changed.template";
 
 // Mock type definitions
 const mockUserModel = UserModel as jest.Mocked<typeof UserModel>;

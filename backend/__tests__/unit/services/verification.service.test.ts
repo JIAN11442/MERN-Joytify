@@ -1,46 +1,46 @@
-import UserModel from "../../src/models/user.model";
-import VerificationModel from "../../src/models/verification.model";
+import UserModel from "../../../src/models/user.model";
+import VerificationModel from "../../../src/models/verification.model";
 import {
   sendEmail,
   verifyCode,
   verifyLink,
   sendCodeEmailToUser,
   sendLinkEmailToUser,
-} from "../../src/services/verification.service";
-import { JoytifyVerificationCodeEmail } from "../../src/templates/verification-code.template";
-import { JoytifyResetPasswordLinkEmail } from "../../src/templates/reset-password.template";
+} from "../../../src/services/verification.service";
+import { JoytifyVerificationCodeEmail } from "../../../src/templates/verification-code.template";
+import { JoytifyResetPasswordLinkEmail } from "../../../src/templates/reset-password.template";
 import { VerificationCodeActions } from "@joytify/shared-types/constants";
 import {
   generateVerificationCode,
   generateVerificationLink,
-} from "../../src/utils/generate-code.util";
-import { signToken, verifyToken, VerificationTokenSignOptions } from "../../src/utils/jwt.util";
-import { generateNanoId } from "../../src/utils/generate-nanoid.util";
-import { tenMinutesFromNow } from "../../src/utils/date.util";
-import { compareHashValue } from "../../src/utils/bcrypt.util";
-import appAssert from "../../src/utils/app-assert.util";
-import resend from "../../src/config/resend.config";
+} from "../../../src/utils/generate-code.util";
+import { signToken, verifyToken, VerificationTokenSignOptions } from "../../../src/utils/jwt.util";
+import { generateNanoId } from "../../../src/utils/generate-nanoid.util";
+import { tenMinutesFromNow } from "../../../src/utils/date.util";
+import { compareHashValue } from "../../../src/utils/bcrypt.util";
+import appAssert from "../../../src/utils/app-assert.util";
+import resend from "../../../src/config/resend.config";
 
 // Mock all external dependencies
-jest.mock("../../src/models/user.model");
-jest.mock("../../src/models/verification.model");
-jest.mock("../../src/utils/jwt.util");
-jest.mock("../../src/utils/generate-code.util");
-jest.mock("../../src/utils/generate-nanoid.util");
-jest.mock("../../src/utils/date.util");
-jest.mock("../../src/utils/bcrypt.util");
-jest.mock("../../src/utils/app-assert.util");
-jest.mock("../../src/config/resend.config");
-jest.mock("../../src/templates/verification-code.template");
-jest.mock("../../src/templates/reset-password.template");
-jest.mock("../../src/constants/env-validate.constant");
+jest.mock("../../../src/models/user.model");
+jest.mock("../../../src/models/verification.model");
+jest.mock("../../../src/utils/jwt.util");
+jest.mock("../../../src/utils/generate-code.util");
+jest.mock("../../../src/utils/generate-nanoid.util");
+jest.mock("../../../src/utils/date.util");
+jest.mock("../../../src/utils/bcrypt.util");
+jest.mock("../../../src/utils/app-assert.util");
+jest.mock("../../../src/config/resend.config");
+jest.mock("../../../src/templates/verification-code.template");
+jest.mock("../../../src/templates/reset-password.template");
+jest.mock("../../../src/constants/env-validate.constant");
 
 // Mock template functions
-jest.mock("../../src/templates/verification-code.template", () => ({
+jest.mock("../../../src/templates/verification-code.template", () => ({
   JoytifyVerificationCodeEmail: jest.fn().mockReturnValue("verification-template" as any),
 }));
 
-jest.mock("../../src/templates/reset-password.template", () => ({
+jest.mock("../../../src/templates/reset-password.template", () => ({
   JoytifyResetPasswordLinkEmail: jest.fn().mockReturnValue("reset-template" as any),
 }));
 

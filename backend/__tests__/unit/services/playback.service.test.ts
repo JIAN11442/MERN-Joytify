@@ -1,20 +1,20 @@
 import mongoose from "mongoose";
-import SongModel from "../../src/models/song.model";
-import HistoryModel from "../../src/models/history.model";
-import PlaybackModel from "../../src/models/playback.model";
+import SongModel from "../../../src/models/song.model";
+import HistoryModel from "../../../src/models/history.model";
+import PlaybackModel from "../../../src/models/playback.model";
 import {
   createPlaybackLog,
   getPlaybackStatisticsBySongId,
-} from "../../src/services/playback.service";
-import { trackPlaybackStats } from "../../src/services/stats.service";
-import appAssert from "../../src/utils/app-assert.util";
+} from "../../../src/services/playback.service";
+import { trackPlaybackStats } from "../../../src/services/stats.service";
+import appAssert from "../../../src/utils/app-assert.util";
 
 // Mock all external dependencies
-jest.mock("../../src/models/song.model");
-jest.mock("../../src/models/history.model");
-jest.mock("../../src/models/playback.model");
-jest.mock("../../src/services/stats.service");
-jest.mock("../../src/utils/app-assert.util");
+jest.mock("../../../src/models/song.model");
+jest.mock("../../../src/models/history.model");
+jest.mock("../../../src/models/playback.model");
+jest.mock("../../../src/services/stats.service");
+jest.mock("../../../src/utils/app-assert.util");
 
 // Mock type definitions
 const mockSongModel = SongModel as jest.Mocked<typeof SongModel>;

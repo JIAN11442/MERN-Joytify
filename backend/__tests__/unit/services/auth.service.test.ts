@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
-import UserModel from "../../src/models/user.model";
-import SessionModel from "../../src/models/session.model";
+import UserModel from "../../../src/models/user.model";
+import SessionModel from "../../../src/models/session.model";
 import {
   createAccount,
   CreateAccountServiceRequest,
@@ -11,24 +11,24 @@ import {
   verifyFirebaseAccessToken,
   loginUserWithThirdParty,
   registerUserWithThirdParty,
-} from "../../src/services/auth.service";
+} from "../../../src/services/auth.service";
 import {
   signToken,
   verifyToken,
   AccessTokenSignOptions,
   RefreshTokenSignOptions,
   UserPreferenceSignOptions,
-} from "../../src/utils/jwt.util";
-import appAssert from "../../src/utils/app-assert.util";
-import { thirtyDaysFormNow, oneDay } from "../../src/utils/date.util";
+} from "../../../src/utils/jwt.util";
+import appAssert from "../../../src/utils/app-assert.util";
+import { thirtyDaysFormNow, oneDay } from "../../../src/utils/date.util";
 
 // Mock all external dependencies
-jest.mock("../../src/models/user.model");
-jest.mock("../../src/models/session.model");
+jest.mock("../../../src/models/user.model");
+jest.mock("../../../src/models/session.model");
 jest.mock("firebase-admin");
-jest.mock("../../src/utils/jwt.util");
-jest.mock("../../src/utils/app-assert.util");
-jest.mock("../../src/utils/date.util");
+jest.mock("../../../src/utils/jwt.util");
+jest.mock("../../../src/utils/app-assert.util");
+jest.mock("../../../src/utils/date.util");
 
 // Mock type definitions
 const mockUserModel = UserModel as jest.Mocked<typeof UserModel>;
