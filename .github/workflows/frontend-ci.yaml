@@ -1,8 +1,0 @@
-# name: Frontend CI/CD
-
-# on:
-#   push:
-#     paths:
-#       - "frontend/**"
-#     branches:
-#       - main
